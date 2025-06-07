@@ -1,7 +1,15 @@
 package de.telran_1schop._mbe.pojo;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import org.springframework.stereotype.Component;
+
 import java.sql.Timestamp;
 import java.util.Objects;
+
+
+
+@Component
 
 public class Product {
 
@@ -22,6 +30,21 @@ public class Product {
     private Timestamp updatedAt;
 
     private Long categoryId;
+
+    public Product(long l, String mören) {
+    }
+
+    @PostConstruct
+    void init() {
+
+        System.out.println(" zdes my mojem vipolnit kakie-to deistvia posle sozdania objekta pered ego ispolzovaniem " + this);
+
+    }
+
+    @PreDestroy
+    void destroy() {
+        System.out.println(" zdes my mojem vipolnit kakie-to deistvia pered ynichtojeniem bina " + this);
+    }
 
     public Long getProduktId() {
         return produktId;
